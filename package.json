@@ -1,0 +1,19 @@
+{
+  "name": "ecommerce-backend",
+  "version": "1.0.0",
+  "description": "A Backend service for ecommerce application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JyogitaThakur/ecommerce-backend.git"
+  },
+  "author": "Jyogita Thakur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JyogitaThakur/ecommerce-backend/issues"
+  },
+  "homepage": "https://github.com/JyogitaThakur/ecommerce-backend#readme"
+}
