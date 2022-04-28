@@ -18,7 +18,7 @@ connectDB()
 app.use(express.json()) // middleware to access the body
 app.use('/user', authRoutes) 
 
-app.listen('/', (req,res)=>{
+app.get('/', (req,res)=>{
     res.send(`Server deployed on Port : ${PORT}`)
 })
 
