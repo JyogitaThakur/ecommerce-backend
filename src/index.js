@@ -22,6 +22,7 @@ app.get('/', (req,res)=>{
     res.send(`Server deployed on Port : ${PORT}`)
 })
 
+
 app.listen(PORT, ()=>{
     console.log(`Server running on ${PORT}`)
 })
