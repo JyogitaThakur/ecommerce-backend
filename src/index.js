@@ -19,7 +19,7 @@ app.use(express.json()) // middleware to access the body
 app.use('/user', authRoutes) 
 
 app.get('/', (req,res)=>{
-    res.send(`Server deployed on Port : ${PORT}`)
+    res.send(`Server deployed by CI/CD pipeline with secrets on : ${PORT}`)
 })
 
 

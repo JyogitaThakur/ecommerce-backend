@@ -14,3 +14,16 @@ jobs:
     steps:
       - name: test
         run: echo "hi from github workflow"
+      - name: get repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: add github username
+        run: git config --global user.name "Jyogita Thakur"
+      - name: add github email
+        run: git config --global user.email "jyogitathakur@gmail.com"
+      - name: add heroku remote
+        run: git remote add heroku https://heroku:${{secrets.HEROKU_API_KEY}}@git.heroku.com/${{secrets.HEROKU_APP_NAME}}.git
+      - name: push to heroku
+        run: git push heroku main --force
+  
