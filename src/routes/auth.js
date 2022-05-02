@@ -3,7 +3,9 @@ import {User} from '../services/mongodb/schema'
 import bcrypt from 'bcryptjs'
 import {validationResult,body} from 'express-validator'
 import { signJWT, verifyJWT } from "../utils/index"
-import jwt from 'jsonwebtoken'
+
+import { isAuthenticated } from "../services/middlewares/isAuthenticated";
+import { isAdmin } from "../services/middlewares/isAdmin";
 
 const router = express.Router()
 
@@ -142,11 +144,12 @@ async (req,res)=>{
 /*
 type : GET
 path : /user/all
-body : {email,password}
+body : none
 query: none
 description: Route to get all user info
 */
-router.get('/all', async (req,res)=>{
+router.get('/all',isAuthenticated,
+isAdmin, async (req,res)=>{
     try {
         const users = await User.findOne({ }).select("firstName lastName email orders address"); // finds user email in database
         return res.json({
@@ -162,8 +165,7 @@ router.get('/all', async (req,res)=>{
         console.log(error)
         return res.json({
             data:{
-                token:null,
-                success:false,
+                users: [],
             },
             success:false,
             message:error.message
@@ -176,13 +178,13 @@ router.get('/all', async (req,res)=>{
 /*
 type : GET
 path : /user/profile/me
-body : data
-header : authorization
+body : none
+header : authorization = bearer token
 query: none
 description: Route to get profile section
 */
 
-router.get('/profile/me', async (req,res)=>{
+router.get('/profile/me', isAuthenticated, async (req,res)=>{
     try {
         const token = req.headers["authorization"].split(' ')[1]
         const {id} = verifyJWT(token)

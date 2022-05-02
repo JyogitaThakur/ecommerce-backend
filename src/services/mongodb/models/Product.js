@@ -4,10 +4,14 @@ import mongoose from "mongoose";
          type:String,
          required:true
      },
-     stickerPrice : {
+     description:{
+        type:String,
+        required:true
+    },
+    stickerPrice : {
          type:Number
      },
-     markedPrice : {
+    markedPrice : {
         type:Number
     },
     category: {
