@@ -189,7 +189,7 @@ router.get('/profile/me', isAuthenticated, async (req,res)=>{
         const token = req.headers["authorization"].split(' ')[1]
         const {id} = verifyJWT(token)
         //  get the userid from json token
-        const user = await User.findOne({_id : id})       
+        const user = await User.findOne({_id : id}).populate("address")       
         return res.json({
             data:{
                 user,

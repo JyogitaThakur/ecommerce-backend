@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
  const AddressSchema = new mongoose.Schema({
+     user:{
+         type:mongoose.Types.ObjectId,
+         ref:"User"
+     },
      housenumber:{
          type: Number,
          required:true,
@@ -7,11 +11,15 @@ import mongoose from "mongoose";
      fulladdress : {
          type:String,
          required:true,
-         minlength:10,
+         minlength:1,
          maxlength:500
      },
      landmark : {
         type:String,
+        required:true
+    }, 
+    pincode : {
+        type:Number,
         required:true
     }, 
 },{
